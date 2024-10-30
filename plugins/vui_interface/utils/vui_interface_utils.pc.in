@@ -1,0 +1,10 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: vui_interface
+Description: vui_interface library
+Version: @VERSION@
+Libs: -L${libdir} -lvuiinterface_utils
+Cflags: -I${includedir}/vui_interface_utils

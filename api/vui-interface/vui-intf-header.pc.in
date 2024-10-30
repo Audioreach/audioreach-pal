@@ -1,0 +1,10 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: vui-interface-header
+Description: vui-interface_api headers
+Version: @VERSION@
+Libs: -L${libdir}
+Cflags: -I${includedir}/vuiInterfaceHeader
