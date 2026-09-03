@@ -135,7 +135,7 @@
         </in-device>
         <in-device>
             <id>PAL_DEVICE_IN_WIRED_HEADSET</id>
-            <back_end_name>CODEC_DMA-QAIF-TX-0</back_end_name>
+            <back_end_name>CODEC_DMA-QAIF-TX-1</back_end_name>
             <max_channels>2</max_channels>
             <channels>1</channels>
             <samplerate>48000</samplerate>
