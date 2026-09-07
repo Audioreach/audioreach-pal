@@ -11,7 +11,7 @@ library_include_HEADERS = $(h_sources)
 library_includedir = $(includedir)/sva_interface
 
 AM_CPPFLAGS += @SPF_CFLAGS@
-AM_CPPFLAGS += @VUIINTERFACEHEADERS_CFLAGS@
+AM_CPPFLAGS += -I $(top_srcdir)/api/vui-interface/
 AM_CPPFLAGS += @KVH2XML_CFLAGS@
 AM_CPPFLAGS += -D__unused=__attribute__\(\(__unused__\)\)
 AM_CPPFLAGS += -I $(top_srcdir)/sva_intf/src/

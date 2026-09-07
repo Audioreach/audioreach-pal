@@ -140,6 +140,7 @@ AM_CONDITIONAL([COMPILE_STREAMSOUNDTRIGGER], [test "x${with_streamSoundTrigger}"
 
 AC_CONFIG_SUBDIRS([
         inc
+        plugins/vui_interface/api/vui-interface
 ])
 
 AC_CONFIG_FILES([ Makefile \
