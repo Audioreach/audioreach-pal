@@ -1367,7 +1367,7 @@ int32_t ASREngine::setECRef(StreamASR *s, std::shared_ptr<Device> dev, bool isEn
     std::unique_lock<std::recursive_mutex> lck(ecRefMutex);
     if (isEnable) {
         if (isCrrDevUsingExtEc && !isDevEnabledExtEc) {
-            PAL_ERR(LOG_TAG, "Internal EC connot be set, when external EC is active");
+            PAL_ERR(LOG_TAG, "Internal EC cannot be set, when external EC is active");
             return -EINVAL;
         }
         if (setECForFirstTime) {

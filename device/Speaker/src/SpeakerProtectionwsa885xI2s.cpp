@@ -837,7 +837,7 @@ int SpeakerProtectionwsa885xI2s::viTxSetupThreadLoop()
         config.channels = CHANNELS_4;
     break;
     default:
-        PAL_DBG(LOG_TAG, "Unsupported channel. Set defauly as 4");
+        PAL_DBG(LOG_TAG, "Unsupported channel. Set default as 4");
         ch_info.channels = CHANNELS_4;
         config.channels = CHANNELS_4;
     }

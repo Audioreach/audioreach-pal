@@ -717,7 +717,7 @@ void StreamCallTranslation::HandleEventData(eventPayload engEvent)
          }
          default : {
              validEvent = false;
-             PAL_INFO(LOG_TAG, "Invalid event recieved, ignore!!!");
+             PAL_INFO(LOG_TAG, "Invalid event received, ignore!!!");
          }
      }
 

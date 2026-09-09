@@ -824,7 +824,7 @@ int compressSilenceDetectionConfig(uint8_t config, pal_device *dAttr,  void * pl
     status =  SessionAlsaUtils::getModuleInstanceId(mxr,
         pcmDevIds.at(0), txAifBackEnds[0].second.data(), DEVICE_HW_ENDPOINT_TX, &miid);
     if (status != 0) {
-        PAL_ERR(LOG_TAG, "Error retriving MIID for HW_ENDPOINT_TX\n");
+        PAL_ERR(LOG_TAG, "Error retrieving MIID for HW_ENDPOINT_TX\n");
         return -SD_ENABLE;
     }
     payloadSize = sizeof(struct apm_module_param_data_t)+sizeof(param_id_silence_detection_t);

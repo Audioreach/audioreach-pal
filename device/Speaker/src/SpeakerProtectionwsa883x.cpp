@@ -767,7 +767,7 @@ int SpeakerProtectionwsa883x::viTxSetupThreadLoop()
         config.channels = CHANNELS_2;
     break;
     default:
-        PAL_DBG(LOG_TAG, "Unsupported channel. Set defauly as 2");
+        PAL_DBG(LOG_TAG, "Unsupported channel. Set default as 2");
         ch_info.channels = CHANNELS_2;
         config.channels = CHANNELS_2;
     }

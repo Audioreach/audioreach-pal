@@ -706,7 +706,7 @@ set_mixer:
                             pcmDevIds.at(0), txAifBackEnds[0].second.data(),
                                                 DEVICE_HW_ENDPOINT_TX, &miid);
             if (status != 0) {
-                PAL_ERR(LOG_TAG, "Error retriving MIID for HW_ENDPOINT_TX\n");
+                PAL_ERR(LOG_TAG, "Error retrieving MIID for HW_ENDPOINT_TX\n");
                 goto err_silence_ev_setup;
             }
 
@@ -1246,7 +1246,7 @@ int32_t pcmPluginConfigSetConfigStop(Stream* s, void* pluginPayload)
             PAL_DBG(LOG_TAG, "case PAL_AUDIO_OUTPUT:\n");
             if (session->getIsPauseRegistrationDone()) {
                 // Stream supports Soft Pause and was registered with RM
-                // sucessfully. Thus Deregister callback for Soft Pause
+                // successfully. Thus Deregister callback for Soft Pause
                 payload_size = sizeof(struct agm_event_reg_cfg);
                 memset(&event_cfg, 0, sizeof(event_cfg));
                 event_cfg.event_id = EVENT_ID_SOFT_PAUSE_PAUSE_COMPLETE;

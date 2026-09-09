@@ -823,7 +823,7 @@ see_client* ContextManager::SEE_Client_Get_Existing(uint32_t see_id)
         client = it->second;
     }
     else {
-        PAL_ERR(LOG_TAG, "Error:%d see_id:%d doesnt exist", -EINVAL, see_id);
+        PAL_ERR(LOG_TAG, "Error:%d see_id:%d doesn't exist", -EINVAL, see_id);
     }
 
     PAL_VERBOSE(LOG_TAG, "Exit");

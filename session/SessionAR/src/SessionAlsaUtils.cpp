@@ -1338,7 +1338,7 @@ int SessionAlsaUtils::registerMixerEvent(struct mixer *mixer, int device, const 
     // get module instance id
     status = SessionAlsaUtils::getModuleInstanceId(mixer, device, intf_name, tag_id, &miid);
     if (status) {
-        PAL_ERR(LOG_TAG, "Failed to get tage info %x, status = %d", tag_id, status);
+        PAL_ERR(LOG_TAG, "Failed to get stage info %x, status = %d", tag_id, status);
         return EINVAL;
     }
 

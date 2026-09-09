@@ -590,7 +590,7 @@ void StreamASR::HandleEventData(eventPayload engEvent) {
             break;
         }
         default : {
-            PAL_INFO(LOG_TAG, "Invalid event recieved, ignore!!!");
+            PAL_INFO(LOG_TAG, "Invalid event received, ignore!!!");
         }
     }
 

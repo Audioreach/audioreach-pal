@@ -796,7 +796,7 @@ typedef enum {
     PAL_PARAM_ID_RECOGNITION_CONFIG = 1,
     PAL_PARAM_ID_ECNS_ON_OFF = 2,
     PAL_PARAM_ID_DIRECTION_OF_ARRIVAL = 3,
-    PAL_PARAM_ID_UIEFFECT = 4, /*deprecated please dont use*/
+    PAL_PARAM_ID_UIEFFECT = 4, /*deprecated please don't use*/
     PAL_PARAM_ID_STOP_BUFFERING = 5,
     PAL_PARAM_ID_CODEC_CONFIGURATION = 6,
     /* Non-Stream Specific Parameters*/

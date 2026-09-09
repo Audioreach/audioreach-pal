@@ -98,7 +98,7 @@ Stream* Stream::create(struct pal_stream_attributes *sAttr, struct pal_device *d
     PAL_DBG(LOG_TAG, "Enter.");
 
     if (!sAttr || ((noOfDevices > 0) && !dAttr)) {
-        PAL_ERR(LOG_TAG, "Invalid input paramters");
+        PAL_ERR(LOG_TAG, "Invalid input parameters");
         goto exit;
     }
 
@@ -1593,7 +1593,7 @@ int32_t Stream::switchDevice(Stream* streamHandle, uint32_t numDev, struct pal_d
             if (rm->matchDevDir(mDevices[curDeviceSlots[j]]->getSndDeviceId(), newDeviceId) &&
                 mDevices[curDeviceSlots[j]]->getSndDeviceId() != newDevices[newDeviceSlots[i]].id) {
                 streamDevDisconnect.push_back({streamHandle, mDevices[curDeviceSlots[j]]->getSndDeviceId()});
-                // if something disconnected incoming device and current dev diff so push on a switchwe need to add the deivce
+                // if something disconnected incoming device and current dev diff so push on a switchwe need to add the device
                 matchFound = true;
                 // for switching from speaker/handset to other devices, if this is the last stream that active
                 // on speaker/handset, need to update group config from concurrency to standalone

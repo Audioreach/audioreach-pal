@@ -872,7 +872,7 @@ int HapticsDevProtection::HapticsDevStartCalibration(int32_t operation_mode)
     // TODO: Make this to wait in While loop
     if (!mDspCallbackRcvd) {
         if (cv.wait_for(calLock, std::chrono::seconds(3)) == std::cv_status::timeout) {
-            PAL_ERR(LOG_TAG, "Timeout occured! for VI calibration");
+            PAL_ERR(LOG_TAG, "Timeout occurred! for VI calibration");
             goto done;
         }
     }
@@ -2291,7 +2291,7 @@ int32_t HapticsDevProtection::getAndsetPersistentParameter(bool flag)
             if (!fp) {
                 PAL_ERR(LOG_TAG, "Unable to open file for write");
             } else {
-                PAL_DBG(LOG_TAG, "Write the Vi persistant value to file");
+                PAL_DBG(LOG_TAG, "Write the Vi persistent value to file");
                 for (int i = 0; i < numberOfChannels; i++) {
                     PAL_INFO(LOG_TAG, "persistent values VIpeValue->Re_ohm_q24[i] =%d",VIpeValue->Re_ohm_q24[i]);
                     fwrite(&VIpeValue->Re_ohm_q24[i], sizeof(VIpeValue->Re_ohm_q24[i]),
@@ -2330,7 +2330,7 @@ int32_t HapticsDevProtection::getAndsetPersistentParameter(bool flag)
                 PAL_ERR(LOG_TAG," payload creation Failed\n");
                 return 0;
             }
-            PAL_DBG(LOG_TAG, "update Vi persistant value from file");
+            PAL_DBG(LOG_TAG, "update Vi persistent value from file");
             for (int i = 0; i < numberOfChannels; i++) {
                     fread(&VIpeValue->Re_ohm_q24[i], sizeof(VIpeValue->Re_ohm_q24[i]),
                                              1, fp);

@@ -1852,7 +1852,7 @@ int ResourceManager::handlePBChargerInsertion(Stream *stream)
 
     if (!stream) {
         status = -EINVAL;
-        PAL_ERR(LOG_TAG, "Stream dont exists, status %d", status);
+        PAL_ERR(LOG_TAG, "Stream don't exists, status %d", status);
         goto exit;
     }
 
@@ -1917,7 +1917,7 @@ int ResourceManager::handlePBChargerRemoval(Stream *stream)
 
     if (!stream) {
         status = -EINVAL;
-        PAL_ERR(LOG_TAG, "Stream dont exists, status %d", status);
+        PAL_ERR(LOG_TAG, "Stream don't exists, status %d", status);
         goto exit;
     }
 
@@ -2268,7 +2268,7 @@ void ResourceManager::getDeviceInfo(pal_device_id_t deviceId, pal_stream_type_t 
                             if (!(deviceInfo[i].usecase[j].config[k].sndDevName).empty()) {
                                 devinfo->sndDevName = deviceInfo[i].usecase[j].config[k].sndDevName;
                                 devinfo->sndDevName_overwrite = true;
-                                PAL_VERBOSE(LOG_TAG, "got overwitten snd dev %s for custom key %s usecase %d for dev %s",
+                                PAL_VERBOSE(LOG_TAG, "got overwritten snd dev %s for custom key %s usecase %d for dev %s",
                                         devinfo->sndDevName.c_str(),
                                         key.c_str(),
                                         type,
@@ -3439,7 +3439,7 @@ int ResourceManager::addPlugInDevice(std::shared_ptr<Device> d,
 
     ret = d->init(connection_state);
     if (ret && ret != -ENOENT) {
-        PAL_ERR(LOG_TAG, "failed to init deivce.");
+        PAL_ERR(LOG_TAG, "failed to init device.");
         return ret;
     }
 
@@ -8655,7 +8655,7 @@ int ResourceManager::getGainLevelMapping(struct pal_amp_db_and_gain_table *mapTb
     int size = 0;
 
     if (gainLvlMap.empty()) {
-        PAL_DBG(LOG_TAG, "empty or currupted gain_mapping_table");
+        PAL_DBG(LOG_TAG, "empty or corrupted gain_mapping_table");
         return 0;
     }
 
@@ -9865,7 +9865,7 @@ bool ResourceManager::doDevAttrDiffer(struct pal_device *inDevAttr,
          * always switch all to incoming device
          */
         if (inDevAttr->id != curDevAttr->id) {
-            PAL_DBG(LOG_TAG, "found diff in device id cur dev %d incomming dev %d, device switch needed",
+            PAL_DBG(LOG_TAG, "found diff in device id cur dev %d incoming dev %d, device switch needed",
                     curDevAttr->id, inDevAttr->id);
             ret = true;
         }
@@ -9896,7 +9896,7 @@ bool ResourceManager::doDevAttrDiffer(struct pal_device *inDevAttr,
      * always switch all to incoming device
      */
     if (inDevAttr->id != curDevAttr->id) {
-        PAL_DBG(LOG_TAG, "found diff in device id cur dev %d incomming dev %d, device switch needed",
+        PAL_DBG(LOG_TAG, "found diff in device id cur dev %d incoming dev %d, device switch needed",
                 curDevAttr->id, inDevAttr->id);
         ret = true;
     }

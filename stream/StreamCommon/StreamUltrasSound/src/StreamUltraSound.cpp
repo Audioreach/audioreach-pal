@@ -107,7 +107,7 @@ int32_t StreamUltraSound::start()
         PAL_ERR(LOG_TAG, "Ultrasound set gain failed, status = %d", status);
         goto skip_upd_set_gain;
     }
-    PAL_INFO(LOG_TAG, "Ultrasound gain(%d) set sucessfully", gain);
+    PAL_INFO(LOG_TAG, "Ultrasound gain(%d) set successfully", gain);
 
 skip_upd_set_gain:
     mStreamMutex.unlock();

@@ -872,7 +872,7 @@ int enableSilenceDetection(const std::shared_ptr<ResourceManager> rm,
     }
     PAL_INFO(LOG_TAG, "Registered CB for Silence Detection\n");
     silenceEventRegistered = true;
-    PAL_INFO(LOG_TAG, "Silence Detection setup sucessfully \n");
+    PAL_INFO(LOG_TAG, "Silence Detection setup successfully \n");
 
     goto silence_ev_setup_done;
 

@@ -1974,7 +1974,7 @@ int32_t SoundTriggerEngineGsl::setECRef(StreamSoundTrigger *s, std::shared_ptr<D
     std::unique_lock<std::recursive_mutex> lck(ec_ref_mutex_);
     if (is_enable) {
         if (is_crr_dev_using_ext_ec_ && !is_dev_enabled_ext_ec) {
-            PAL_ERR(LOG_TAG, "Internal EC connot be set, when external EC is active");
+            PAL_ERR(LOG_TAG, "Internal EC cannot be set, when external EC is active");
             return -EINVAL;
         }
         if (setECForFirstTime) {

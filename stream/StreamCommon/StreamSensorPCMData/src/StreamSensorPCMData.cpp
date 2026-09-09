@@ -778,7 +778,7 @@ int32_t StreamSensorPCMData::ConnectDevice_l(pal_device_id_t device_id)
     PAL_DBG(LOG_TAG, "Enter, device_id: %d", device_id);
 
     if (GetAvailCaptureDevice() != device_id) {
-        PAL_INFO(LOG_TAG, "Skip, device %d is alreay connected",
+        PAL_INFO(LOG_TAG, "Skip, device %d is already connected",
                  GetAvailCaptureDevice());
         goto connect_err;
     }

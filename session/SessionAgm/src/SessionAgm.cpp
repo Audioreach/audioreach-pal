@@ -147,7 +147,7 @@ void eventCallback(uint32_t session_id, struct agm_event_cb_params *event_params
     if (sessAgm->sessionCb && event_id !=  PAL_STREAM_CBK_MAX) {
         sessAgm->sessionCb(sessAgm->cbCookie, event_id, event_data, event_size);
     } else {
-       PAL_INFO(LOG_TAG, "no session cb registerd or event not valid");
+       PAL_INFO(LOG_TAG, "no session cb registered or event not valid");
     }
 
     if (rw_done_payload && rw_done_payload->buff.ts)
