@@ -35,8 +35,10 @@
 #include <dlfcn.h>
 #include <errno.h>
 
-#ifdef VUI_USE_SYSLOG
 #include <stdint.h>
+#include "PalCommon.h"
+
+#ifdef PAL_USE_SYSLOG
 #include <syslog.h>
 
 #ifndef ALOGD
