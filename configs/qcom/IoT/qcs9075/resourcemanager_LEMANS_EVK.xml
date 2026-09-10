@@ -49,6 +49,7 @@
         <stream name="PAL_STREAM_RAW" max_size="1" />
         <stream name="PAL_STREAM_PCM_OFFLOAD" max_size="2" />
         <stream name="PAL_STREAM_ULTRA_LOW_LATENCY" max_size="8" />
+        <stream name="PAL_STREAM_VOICE_UI" max_size="2" />
     </config_max_sessions> 
     <config_volume>
         <use_volume_set_param>0</use_volume_set_param>
@@ -73,6 +74,45 @@
         <gain_level_map db="0" level="1"/>
     </gain_db_to_level_mapping>
     <device_profile>
+        <in-device>
+            <id>PAL_DEVICE_IN_HANDSET_VA_MIC</id>
+            <back_end_name>MI2S-LPAIF_SDR-TX-TERTIARY</back_end_name>
+            <max_channels>2</max_channels>
+            <channels>1</channels>
+            <samplerate>48000</samplerate>
+            <bit_width>16</bit_width>
+            <snd_device_name>va-mic</snd_device_name>
+            <ec_enable>1</ec_enable>
+            <lpi_mode_on>0</lpi_mode_on>
+			<ec_rx_device>
+				<id>PAL_DEVICE_OUT_SPEAKER</id>
+			</ec_rx_device>
+            <usecase>
+                <name>PAL_STREAM_VOICE_UI</name>
+                <samplerate>16000</samplerate>
+                <channels>1</channels>
+                <bit_width>16</bit_width>
+            </usecase>
+        </in-device>
+		<in-device>
+			<id>PAL_DEVICE_IN_HANDSET_MIC</id>
+			<back_end_name>MI2S-LPAIF_SDR-TX-TERTIARY</back_end_name>
+			<max_channels>2</max_channels>
+			<channels>1</channels>
+			<samplerate>48000</samplerate>
+			<bit_width>16</bit_width>
+			<snd_device_name>speaker-mic</snd_device_name>
+			<ec_enable>1</ec_enable>
+			<ec_rx_device>
+				<id>PAL_DEVICE_OUT_SPEAKER</id>
+			</ec_rx_device>
+			<usecase>
+				<name>PAL_STREAM_VOICE_UI</name>
+				<samplerate>16000</samplerate>
+				<channels>1</channels>
+				<bit_width>16</bit_width>
+			</usecase>
+		</in-device>
         <in-device>
             <id>PAL_DEVICE_IN_SPEAKER_MIC</id>
             <back_end_name>MI2S-LPAIF_SDR-TX-TERTIARY</back_end_name>
@@ -128,4 +168,162 @@
             </usecase>
         </out-device>
     </device_profile>
+    <in_streams>
+        <in_stream>
+            <name>PAL_STREAM_VOICE_UI</name>
+            <policies>
+                <ec_ref>
+                    <disabled_stream>PAL_STREAM_GENERIC</disabled_stream>
+                </ec_ref>
+            </policies>
+        </in_stream>
+    </in_streams>
+
+    <sound_trigger_platform_info>
+        <param version="0x0100" />
+        <common_config>
+            <param enable_failure_detection="false" />
+            <param support_device_switch="true" />
+			<param support_nlpi_switch="true" />
+            <param transit_to_non_lpi_on_charging="false" />
+            <param lpi_enable="false" />
+            <param enable_debug_dumps="false" />
+            <param concurrent_capture="true" />
+            <param concurrent_voice_call="true" />
+            <param concurrent_voip_call="true" />
+            <param low_latency_bargein_enable="false" />
+        </common_config>
+        <capture_profile_list>
+			<!-- GKV 2 & 3: RAW_LPI ? VA_Mic + RAW_LPI + GMM/PDK6 -->
+			<capture_profile name="SINGLE_MIC_16KHZ_16BIT_RAW_LPI">
+				<param device_id="PAL_DEVICE_IN_HANDSET_VA_MIC" />
+				<param sample_rate="16000" />
+				<param channels="1" />
+				<param bit_width="16" />
+				<param snd_name="va-mic" />
+				<param ec_ref="false" />
+			</capture_profile>
+			<!-- GKV 1: FFNS ? VA_Mic + Fluence_FFNS + PDK6 -->
+			<capture_profile name="SINGLE_MIC_16KHZ_16BIT_FFNS">
+				<param device_id="PAL_DEVICE_IN_HANDSET_VA_MIC" />
+				<param sample_rate="16000" />
+				<param channels="1" />
+				<param bit_width="16" />
+				<param snd_name="va-mic" />
+				<param ec_ref="false" />
+			</capture_profile>
+			<!-- GKV 4: FFECNS ? Handset_Mic + Fluence_FFECNS + PDK6 -->
+			<capture_profile name="SINGLE_MIC_16KHZ_16BIT_FFECNS">
+				<param device_id="PAL_DEVICE_IN_HANDSET_MIC" />
+				<param sample_rate="16000" />
+				<param channels="1" />
+				<param bit_width="16" />
+				<param snd_name="speaker-mic" />
+				<param ec_ref="true" />
+			</capture_profile>
+			 <!-- RAW_NLPI ? VA_Mic + RAW_NLPI + PDK6 -->
+			<capture_profile name="SINGLE_MIC_16KHZ_16BIT_RAW_NLPI">
+				<param device_id="PAL_DEVICE_IN_HANDSET_VA_MIC" />
+				<param sample_rate="16000" />
+				<param channels="1" />
+				<param bit_width="16" />
+				<param snd_name="speaker-mic" />
+				<param ec_ref="false" />
+			</capture_profile>
+		</capture_profile_list>
+        <sound_model_config>
+            <param vendor_uuid="68ab2d40-e860-11e3-95ef-0002a5d5c51b"/>
+            <param get_module_version="false" />
+            <param kw_start_tolerance="100" />
+            <param kw_end_tolerance="100" />
+            <param merge_first_stage_sound_models="false"/>
+            <param capture_keyword="2000" />
+            <param client_capture_read_delay="2000" />
+            <param sample_rate="16000" />
+            <param bit_width="16" />
+            <param out_channels="1"/>
+            <operating_modes>
+                <low_power capture_profile_handset="SINGLE_MIC_16KHZ_16BIT_RAW_LPI"/>
+				<high_performance capture_profile_handset="SINGLE_MIC_16KHZ_16BIT_FFECNS"/>
+				<high_performance_and_charging capture_profile_handset="SINGLE_MIC_16KHZ_16BIT_FFECNS"/>
+            </operating_modes>
+            <module_params>
+                <param load_sound_model_ids="0xC0000008, 0x0800104C" />
+                <param unload_sound_model_ids="0xC0000008, 0x00012C15" />
+                <param custom_config_ids="0xC0000008, 0x00012C20" />
+                <param buffering_config_ids="0xC0000008, 0x08001044" />
+                <param engine_reset_ids="0xC0000008, 0x08001051" />
+                <streamConfig-metadata>
+                    <kvpair key="0xBC000000" value="0xBC000005"/>
+                </streamConfig-metadata>
+            </module_params>
+        </sound_model_config>
+
+        <vui_platform_info>
+            <config>
+                <param version="0x0103" />
+                <param enable_failure_detection="false" />
+                <param notify_second_stage_failure="false" />
+                <param transit_to_non_lpi_on_charging="false" />
+                <param enable_inter_va_engine_concurrent_detection="true" />
+            </config>
+            <stream_config>
+                <name>QC_VOICE_UI</name>
+                <param vendor_uuid="68ab2d40-e860-11e3-95ef-0002a5d5c51b" />
+                <param interface_plugin_lib="libsva_intf.so" />
+                <param merge_first_stage_sound_models="false" />
+				<param mmap_enable="true"/>
+				<param mmap_buffer_duration="5000"/>
+				<param mmap_frame_length="5"/>
+                <param pdk_first_stage_max_engine_count="1" />
+                <param capture_keyword="2000" />
+                <param client_capture_read_delay="2000" />
+                <param kw_start_tolerance="360000" />
+                <param kw_end_tolerance="240000" />
+                <param data_before_kw_start="360000" />
+                <param data_after_kw_end="480000" />
+                <param sample_rate="16000" />
+                <param bit_width="16" />
+                <param out_channels="1" />
+				<operating_modes>
+					<low_power capture_profile_handset="SINGLE_MIC_16KHZ_16BIT_FFNS"/>
+					<high_performance capture_profile_handset="SINGLE_MIC_16KHZ_16BIT_FFECNS"/>
+					<high_performance_and_charging capture_profile_handset="SINGLE_MIC_16KHZ_16BIT_FFECNS"/>
+					<!-- <low_power capture_profile_handset="SINGLE_MIC_16KHZ_16BIT_RAW_LPI"/>-->
+					<!-- <high_performance capture_profile_handset="SINGLE_MIC_16KHZ_16BIT_RAW_LPI"/>-->
+					<!-- <high_performance_and_charging capture_profile_handset="SINGLE_MIC_16KHZ_16BIT_RAW_LPI"/>-->
+					<!-- <low_power capture_profile_handset="SINGLE_MIC_16KHZ_16BIT_RAW_NLPI"/>-->
+					<!-- <high_performance capture_profile_handset="SINGLE_MIC_16KHZ_16BIT_RAW_NLPI"/>-->
+					<!-- <high_performance_and_charging capture_profile_handset="SINGLE_MIC_16KHZ_16BIT_RAW_NLPI"/>-->
+				</operating_modes>
+                <sound_model_info>
+                    <first_stage_module_params>
+						<param module_type="GMM" />
+						<param load_sound_model_ids="0xC0000008, 0x0800104C" />
+						<param unload_sound_model_ids="0xC0000008, 0x08001250" />
+						<param wakeup_config_ids="0xC0000008, 0x08001049" />
+						<param buffering_config_ids="0xC0000008, 0x08001044" />
+						<param engine_reset_ids="0xC0000008, 0x08001051" />
+					</first_stage_module_params>
+					<first_stage_module_params>
+						<param module_type="PDK" />
+						<param load_sound_model_ids="0xC0000008, 0x0800124E" />
+						<param unload_sound_model_ids="0xC0000008, 0x08001250" />
+						<param wakeup_config_ids="0xC0000008, 0x08001049" />
+						<param buffering_config_ids="0xC0000008, 0x0800124F" />
+						<param engine_per_model_reset_ids="0xC0000008, 0x080014ED" />
+					</first_stage_module_params>
+					<arm_ss_module_params>
+						<param sm_detection_type="KEYWORD_DETECTION"/>
+						<param sm_id="0x2"/>
+						<param module_lib="libcapiv2svacnnvendor.so"/>
+						<param sample_rate="16000"/>
+						<param bit_width="16"/>
+						<param channel_count="1"/>
+					</arm_ss_module_params>
+                </sound_model_info>
+            </stream_config>
+        </vui_platform_info>
+    </sound_trigger_platform_info>
+
 </resource_manager_info>

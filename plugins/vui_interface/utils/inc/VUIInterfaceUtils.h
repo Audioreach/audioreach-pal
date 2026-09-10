@@ -38,7 +38,13 @@
 #include <memory>
 #include <cstring>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 #include "ListenSoundModelLib.h"
+#ifdef __cplusplus
+}
+#endif
 
 #define MAX_KW_USERS_NAME_LEN (2 * MAX_STRING_LEN)
 #define MAX_CONF_LEVEL_VALUE 100

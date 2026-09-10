@@ -34,14 +34,17 @@
 #define LOG_TAG "PAL: CustomVA"
 //#define LOG_NDEBUG 0
 
-#include <log/log.h>
+#include "PalCommon.h"
+
 #include "CustomVA.h"
 #ifdef FEATURE_IPQ_OPENWRT
 #include <stdexcept>
 #include <cstring>
 #include <memory>
 #endif
+#ifdef PAL_CUTILS_SUPPORTED
 #include <cutils/properties.h>
+#endif
 
 #define ST_MAX_FSTAGE_CONF_LEVEL  (100)
 #define CUSTOM_CONFIG_OPAQUE_DATA_SIZE 12

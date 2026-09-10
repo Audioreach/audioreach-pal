@@ -181,6 +181,8 @@
                 <graph_kv key="0xB1000000" value="0xB1000003"/>
                 <!-- INSTANCE - INSTANCE_1 -->
                 <graph_kv key="0xAB000000" value="0x1"/>
+                <!-- DEVICE - SPEAKER_MIC -->
+                <graph_kv key="0xA3000000" value="0xA3000006"/>
             </keys_and_values>
             <keys_and_values VUIModuleType="GMM" Instance="2">
                 <!-- STREAM_CONFIG - STREAM_CFG_VUI_GMM -->
@@ -189,6 +191,8 @@
                 <graph_kv key="0xB1000000" value="0xB1000003"/>
                 <!-- INSTANCE - INSTANCE_2 -->
                 <graph_kv key="0xAB000000" value="0x2"/>
+                <!-- DEVICE - SPEAKER_MIC -->
+                <graph_kv key="0xA3000000" value="0xA3000006"/>
             </keys_and_values>
             <keys_and_values VUIModuleType="PDK" Instance="1">
                 <!-- STREAM_CONFIG - STREAM_CFG_VUI_PDK -->
@@ -197,6 +201,7 @@
                 <graph_kv key="0xB1000000" value="0xB1000003"/>
                 <!-- INSTANCE - INSTANCE_1 -->
                 <graph_kv key="0xAB000000" value="0x1"/>
+                <graph_kv key="0xA3000000" value="0xA3000006"/>
             </keys_and_values>
             <keys_and_values VUIModuleType="PDK" Instance="2">
                  <!-- STREAM_CONFIG - STREAM_CFG_VUI_PDK -->
@@ -205,6 +210,7 @@
                  <graph_kv key="0xB1000000" value="0xB1000003"/>
                  <!-- INSTANCE - INSTANCE_2 -->
                  <graph_kv key="0xAB000000" value="0x2"/>
+                 <graph_kv key="0xA3000000" value="0xA3000006"/>
             </keys_and_values>
             <keys_and_values VUIModuleType="PDK" Instance="3">
                 <!-- STREAM_CONFIG - STREAM_CFG_VUI_PDK -->
@@ -213,6 +219,7 @@
                 <graph_kv key="0xB1000000" value="0xB1000003"/>
                 <!-- INSTANCE - INSTANCE_3 -->
                 <graph_kv key="0xAB000000" value="0x3"/>
+                <graph_kv key="0xA3000000" value="0xA3000006"/>
             </keys_and_values>
             <keys_and_values VUIModuleType="HOTWORD" Instance="1">
                 <!-- STREAM_CONFIG - STREAM_CFG_VUI_HW -->
@@ -1044,6 +1051,13 @@
                 <graph_kv key="0xA3000000" value="0xA3000004"/>
                 <!-- DEVICEPP_TX - DEVICEPP_TX_VOIP_FLUENCE_SMECNS -->
                 <graph_kv key="0xAD000000" value="0xAD000007"/>
+            </keys_and_values>
+            <keys_and_values StreamType="PAL_STREAM_VOICE_UI"
+                DevicePPType="SINGLE_MIC_16KHZ_16BIT_FFECNS,DUAL_MIC_16KHZ_16BIT_FFECNS">
+                <!-- DEVICETX - HANDSETMIC -->
+                <graph_kv key="0xA3000000" value="0xA3000004"/>
+                <!-- DEVICEPP_TX - DEVICEPP_TX_FLUENCE_FFECNS -->
+                <graph_kv key="0xAD000000" value="0xAD000001"/>
             </keys_and_values>
         </devicepp>
         <!-- IN Speaker MIC DevicePPs -->

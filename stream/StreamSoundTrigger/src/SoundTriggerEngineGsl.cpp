@@ -221,7 +221,7 @@ int32_t SoundTriggerEngineGsl::ReadMmapBufWriteToRingBuf(size_t& offset, size_t 
                                                          FILE* dsp_output_fd) {
     size_t size = 0;
 
-    PAL_DBG(LOG_TAG, "Bytes to read and write in ring buffer is : %d", size_to_read);
+    PAL_VERBOSE(LOG_TAG, "Bytes to read and write in ring buffer is : %d", size_to_read);
     if (offset + size_to_read <= mmap_buffer_size_) {
         size = buffer_->write((void *)((uint8_t *)mmap_buffer_.buffer + offset), size_to_read);
         if (vui_ptfm_info_->GetEnableDebugDumps()) {
@@ -245,7 +245,7 @@ int32_t SoundTriggerEngineGsl::ReadMmapBufWriteToRingBuf(size_t& offset, size_t 
         offset = size_to_read + offset - mmap_buffer_size_;
     }
     mmap_write_position_ += BytesToFrames(size_to_read);
-    PAL_DBG(LOG_TAG, "%d written to ring buffer", size);
+    PAL_VERBOSE(LOG_TAG, "%d written to ring buffer", size);
     return 0;
 }
 
@@ -283,7 +283,7 @@ int32_t SoundTriggerEngineGsl::BytesToRead(StreamSoundTrigger* s, size_t& bytes_
         PAL_ERR(LOG_TAG, "Failed to get read position");
         status = -ENOMEM;
     }
-    PAL_DBG(LOG_TAG, "Bytes to read : %d", bytes_to_read);
+    PAL_VERBOSE(LOG_TAG, "Bytes to read : %d", bytes_to_read);
 exit:
     return status;
 }
@@ -2302,8 +2302,8 @@ bool SoundTriggerEngineGsl::UpdateGlobalDetectionStatus(bool is_active) {
     std::unique_lock<std::mutex> lck(global_det_mutex_);
 
     if (is_active) {
-        for (const auto& [key, value] : eng_det_stat_map_) {
-            if (value && key != this) {
+        for (const auto& entry : eng_det_stat_map_) {
+            if (entry.second && entry.first != this) {
                 PAL_ERR(LOG_TAG,
                     "Failed to update due to other event being handled");
                 return false;
