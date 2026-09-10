@@ -40,6 +40,7 @@ AC_SUBST([LT_VERSION_NUMBER], LT_MAJOR:LT_MINOR:LT_PATCH)
 AC_ARG_WITH([glib],
       AS_HELP_STRING([--with-glib],
          [enable glib, Build against glib. Use this when building for HLOS systems which use glib]))
+AM_CONDITIONAL([WITH_GLIB], [test "x${with_glib}" = "xyes"])
 
 if (test "x${with_glib}" = "xyes"); then
         PKG_CHECK_MODULES(GTHREAD, gthread-2.0 >= 2.16, dummy=yes,
@@ -53,6 +54,18 @@ if (test "x${with_glib}" = "xyes"); then
         AC_SUBST(GLIB_LIBS)
 fi
 
+AC_ARG_WITH([cutils],
+    AS_HELP_STRING([Use cutils (default is no)]),
+     [with_cutils=$withval],
+     [with_cutils=no])
+AM_CONDITIONAL([CUTILS_SUPPORTED], [test "x${with_cutils}" = "xyes"])
+
+AC_ARG_WITH([openwrt],
+    AS_HELP_STRING([use openwrt (default is no)]),
+    [with_openwrt=$withval],
+    [with_openwrt=no])
+AM_CONDITIONAL([BUILDSYSTEM_OPENWRT], [test "x${with_openwrt}" = "xyes"])
+
 PKG_CHECK_MODULES([SPFHEADER],[spf])
 AC_SUBST([SPFHEADER_CFLAGS])
 
@@ -65,6 +78,10 @@ AC_CONFIG_FILES([
         sva_intf/sva_interface.pc
         utils/Makefile
         utils/vui_interface_utils.pc
+        customva_intf/Makefile
+        customva_intf/customva_intf.pc
+        hotword_intf/Makefile
+        hotword_intf/hotword_intf.pc
         ])
 
 AC_OUTPUT

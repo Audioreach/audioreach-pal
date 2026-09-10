@@ -5,7 +5,11 @@ EXTRA_DIST = $(pkgconfig_DATA)
 h_sources = $(top_srcdir)/sva_intf/inc/SVAInterface.h
 
 
-AM_CPPFLAGS := -DVUI_USE_SYSLOG @GLIB_CFLAGS@ -include glib.h
+AM_CPPFLAGS := -DPAL_USE_SYSLOG @GLIB_CFLAGS@
+
+if WITH_GLIB
+AM_CPPFLAGS += -include glib.h
+endif
 
 library_include_HEADERS = $(h_sources)
 library_includedir = $(includedir)/sva_interface
@@ -13,6 +17,8 @@ library_includedir = $(includedir)/sva_interface
 AM_CPPFLAGS += @SPF_CFLAGS@
 AM_CPPFLAGS += -I $(top_srcdir)/api/vui-interface/
 AM_CPPFLAGS += @KVH2XML_CFLAGS@
+AM_CPPFLAGS += -I $(top_srcdir)/../../inc
+AM_CPPFLAGS += -I $(top_srcdir)/../../
 AM_CPPFLAGS += -D__unused=__attribute__\(\(__unused__\)\)
 AM_CPPFLAGS += -I $(top_srcdir)/sva_intf/src/
 AM_CPPFLAGS += -I $(top_srcdir)/sva_intf/inc/
