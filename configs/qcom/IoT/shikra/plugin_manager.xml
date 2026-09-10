@@ -32,6 +32,8 @@ SPDX-License-Identifier: BSD-3-Clause-Clear
         <!--Handset-->
         <device name="PAL_DEVICE_OUT_HANDSET" lib="libdev_handset.so" entryFunction="CreateHandsetDevice"/>
         <device name="PAL_DEVICE_IN_HANDSET_MIC" lib="libdev_handset_mic.so" entryFunction="CreateHandsetMicDevice"/>
+        <!-- Added for SVA -->
+        <device name="PAL_DEVICE_IN_HANDSET_VA_MIC" lib="libdev_handset_mic.so" entryFunction="CreateHandsetMicDevice"/>
         <!--Speaker-->
         <device name="PAL_DEVICE_OUT_SPEAKER" lib="libdev_speaker.so" entryFunction="CreateSpeakerDevice"/>
         <device name="PAL_DEVICE_IN_SPEAKER_MIC" lib="libdev_speaker_mic.so" entryFunction="CreateSpeakerMicDevice"/>
