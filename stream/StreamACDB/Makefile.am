@@ -22,7 +22,7 @@ library_includedir = $(includedir)/stream_acdb
 
 lib_LTLIBRARIES     = libstream_acdb.la
 libstream_acdb_la_SOURCES   = $(stream_acdb_sources)
-libstream_acdb_la_LIBADD    = @GLIB_LIBS@ -llog -lcutils -lexpat -lar-gsl
+libstream_acdb_la_LIBADD    = @GLIB_LIBS@ -llog -lcutils -lexpat @GSL_LIBS@
 libstream_acdb_la_LIBADD    += -L${abs_top_builddir}/session/SessionAR/.libs -lsession_ar
 libstream_acdb_la_CPPFLAGS := $(AM_CPPFLAGS)
 libstream_acdb_la_CPPFLAGS += -std=c++14
