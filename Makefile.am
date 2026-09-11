@@ -86,11 +86,11 @@ library_includedir = $(includedir)/pal
 lib_LTLIBRARIES     = libpal.la
 libpal_la_SOURCES   = $(pal_sources)
 if BUILDSYSTEM_OPENWRT
-libpal_la_LIBADD    = $(GLIB_LIBS) -ltinyalsa -laudioroute -lar-osal -lexpat -ltinycompress -lagmclientwrapper
-libpal_la_LIBADD   += -lar-gsl
+libpal_la_LIBADD    = $(GLIB_LIBS) -ltinyalsa -laudioroute @OSAL_LIBS@ -lexpat -ltinycompress -lagmclientwrapper
+libpal_la_LIBADD   += @GSL_LIBS@
 libpal_la_CPPFLAGS  = -DFEATURE_IPQ_OPENWRT
 else
-libpal_la_LIBADD    = $(GLIB_LIBS) -ltinyalsa -laudioroute -lar-osal -lexpat -ltinycompress
+libpal_la_LIBADD    = $(GLIB_LIBS) -ltinyalsa -laudioroute @OSAL_LIBS@ -lexpat -ltinycompress
 libpal_la_CPPFLAGS  =  -DPAL_USE_SYSLOG -DLINUX_ENABLED -DATRACE_UNSUPPORTED -DPAL_MEMLOG_UNSUPPORTED -DCARD_STATE_UNSUPPORTED -DPAL_SIGNAL_HANDLER_UNSUPPORTED -DA2DP_SINK_SUPPORTED -DVUI_DMGR_AUDIO_UNSUPPORTED -DAUDIO_FEATURE_STATS_UNSUPPORTED
 endif
 if IS_SDXLEMUR
